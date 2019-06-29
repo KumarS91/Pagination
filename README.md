@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This Project contains Resuable Functional Components with help React Hooks(useState,useEffect) it performs like a Class Component.
+
+useState - Is same as state in Class Component
+useEffect - Is same as Class's Life Cycle Methods(componentDidMount,componentDidUpdate,componentWillUnmount)
+
 ## Available Scripts
 
 In the project directory, you can run:
