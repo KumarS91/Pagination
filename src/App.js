@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Posts from "./components/Posts";
+import Pagination from "./components/Pagination";
 
 const App = () => {
   const [post, setPost] = useState([]);
@@ -17,11 +18,23 @@ const App = () => {
     };
     fetchPosts();
   }, []);
-  console.log(post);
+
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = post.slice(firstPostIndex, lastPostIndex);
+
+  const paginate = pageNumber => {
+    setCurrentPage(pageNumber);
+  };
   return (
     <div className="container mt-3">
-      <h1 className="text-primary mb-4">My Blog</h1>
-      <Posts posts={post} loading={loading} />
+      <h1 className="text-primary mb-4">Sample Pagination</h1>
+      <Posts posts={currentPosts} loading={loading} />
+      <Pagination
+        totalPosts={post.length}
+        postsPerPage={postsPerPage}
+        paginate={paginate}
+      />
     </div>
   );
 };
